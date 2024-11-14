@@ -41,7 +41,6 @@ public class CuentaControlador {
 
     @PostMapping
     public ResponseEntity<?> crearCuenta(@Valid @RequestBody Cuenta cuenta, BindingResult result) {
-        System.out.println("Hola mudno");
         try {
             if(result.hasErrors() ) {
                 return  validarCamposObligatorios(result);

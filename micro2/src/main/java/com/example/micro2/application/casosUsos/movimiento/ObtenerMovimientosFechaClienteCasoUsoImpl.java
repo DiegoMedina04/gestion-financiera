@@ -5,7 +5,6 @@ import com.example.micro2.domian.ports.out.MovimientoRepositoryPort;
 import com.example.micro2.infraestructura.models.Dtos.MovimientoResponseDTO;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class ObtenerMovimientosFechaClienteCasoUsoImpl implements ObtenerMovimientosFechaClienteCasoUso {
 

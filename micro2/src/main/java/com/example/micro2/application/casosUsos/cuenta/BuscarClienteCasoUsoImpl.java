@@ -29,11 +29,9 @@ public class BuscarClienteCasoUsoImpl implements BuscarClienteCasoUso {
 
                ResponseEntity<ClienteDto> response = restTemplate.exchange(url, HttpMethod.GET, entity, ClienteDto.class);
 
-//               ResponseEntity<?> response = restTemplate.getForEntity(url, ClienteDto.class);
                HttpStatusCode codigoRespuestaEstado = response.getStatusCode();
                ClienteDto clienteDto = null;
                if(codigoRespuestaEstado == HttpStatus.OK) {
-                   System.out.println("entro al if --- "+ response.getBody());
                    clienteDto = (ClienteDto) response.getBody();
                }
                return clienteDto;

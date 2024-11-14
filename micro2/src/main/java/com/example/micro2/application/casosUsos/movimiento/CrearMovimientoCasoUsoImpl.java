@@ -27,11 +27,8 @@ public class CrearMovimientoCasoUsoImpl implements CrearMovimientoCasoUso {
     }
     @Override
     public Movimiento crearMovimiento(Movimiento movimiento) {
-        System.out.println("movimiento "+movimiento);
         Optional<Cuenta> cuentaEncontrada = obtenerCuentasCasoUso.obtenerCuentaPorId(movimiento.getCuenta().getId());
-        System.out.println("cuentaEncontrada "+ cuentaEncontrada.orElseThrow());
         Cuenta cuenta=cuentaEncontrada.orElseThrow();
-        System.out.println("cuenta "+ cuenta);
         if(movimiento.getValor()>cuenta.getSaldoInicial() ){
             throw new ErrorBadRequest("Saldo no disponible");
         }

@@ -41,7 +41,6 @@ public class MovimientoControlador {
     @PostMapping
     public ResponseEntity<?> crearMovimiento(@Valid @RequestBody Movimiento movimiento, BindingResult result) {
         try {
-            System.out.println("creando controlador");
             if(result.hasErrors()) {
                 return validarCamposRequeridos(result);
             }

@@ -26,7 +26,6 @@ public class ReportesController {
             @RequestParam("rangoFechaFin") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate rangoFechaFin,
             @RequestParam("clienteId") Long clienteId
     ) {
-//        GET http://localhost:8080/reportes?rangoFechaInicio=2024-11-01&rangoFechaFin=2024-11-30&clienteId=123
         try {
             return  ResponseEntity.ok(movimientoServicio.obtenerMovimientosPorFechaYCliente(rangoFechaInicio, rangoFechaFin, clienteId));
         }catch (Exception e) {
