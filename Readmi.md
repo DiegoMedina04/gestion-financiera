@@ -31,7 +31,7 @@ Para instalar y ejecutar este proyecto en tu máquina local, sigue estos pasos:
 1. Clona este repositorio:
 
    ```bash
-   git clone https://github.com/tu-usuario/tu-repositorio.git
+   git clone https://github.com/DiegoMedina04/gestion-financiera.git
 
 
 2. Se puede levantar en el local entrando al application.properties de los microservicios y colocando la opcion de desarrollo
