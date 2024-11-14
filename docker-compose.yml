@@ -1,0 +1,72 @@
+services:
+  microservicio1:
+    build:
+      context: ./micro1
+      dockerfile: Dockerfile
+    container_name: contenedorMicroservicio1
+    ports:
+      - "9000:8080"
+    networks:
+      - red_microservicios
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_DATASOURCE_URL=jdbc:mysql://contenedor_db_microservicio1:3306/db-micro-1
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+    depends_on:
+      - db_microservicio1
+    restart: always
+
+  microservicio2:
+    build:
+      context: ./micro2
+      dockerfile: Dockerfile
+    container_name: contenedorMicroservicio2
+    ports:
+      - "9001:8080"
+    networks:
+      - red_microservicios
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_DATASOURCE_URL=jdbc:mysql://contenedor_db_microservicio2:3306/db-micro-2
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+    depends_on:
+      - db_microservicio2
+    restart: always
+
+  db_microservicio1:
+    image: mysql:latest
+    container_name: contenedor_db_microservicio1
+    environment:
+      - MYSQL_DATABASE=db-micro-1
+#      - MYSQL_USER=root
+#      - MYSQL_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./mysql_data_micro1:/var/lib/mysql
+    networks:
+      - red_microservicios
+    restart: always
+
+  db_microservicio2:
+    image: mysql:latest
+    container_name: contenedor_db_microservicio2
+    environment:
+      - MYSQL_DATABASE=db-micro-2
+#      - MYSQL_USER=root
+#      - MYSQL_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - "3308:3306"
+    volumes:
+      - ./mysql_data_micro2:/var/lib/mysql
+    networks:
+      - red_microservicios
+    restart: always
+
+networks:
+  red_microservicios:
+    driver: bridge
