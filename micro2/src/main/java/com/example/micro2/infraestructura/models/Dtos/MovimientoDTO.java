@@ -1,10 +1,12 @@
 package com.example.micro2.infraestructura.models.Dtos;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Data
+@NoArgsConstructor
 public class MovimientoDTO {
     private Long id;
     private LocalDate fecha;

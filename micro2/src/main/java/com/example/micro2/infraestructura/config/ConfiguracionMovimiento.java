@@ -28,8 +28,18 @@ public class ConfiguracionMovimiento {
     }
 
     @Bean
-    public ActualizarMovimientoCasoUso actualizarPersonaCasoUso(MovimientoRepositoryPort movimientoRepository) {
-        return new ActualizarMovimientoCasoUsoImpl(movimientoRepository);
+    public ActualizarMovimientoCasoUso actualizarPersonaCasoUso(
+            MovimientoRepositoryPort movimientoRepository,
+            ObtenerMovimientosCasoUso obtenerPersonasCasoUso,
+            @Qualifier("obtenerCuentasCasoUsoBean") ObtenerCuentasCasoUso obtenerCuentasCasoUso,
+            @Qualifier("actualizarClienteCasoUsoBean") ActualizarCuentaCasoUso actualizarCuentaCasoUso
+            ) {
+        return new ActualizarMovimientoCasoUsoImpl(
+                movimientoRepository,
+                obtenerPersonasCasoUso,
+                obtenerCuentasCasoUso,
+                actualizarCuentaCasoUso
+        );
     }
 
     @Bean

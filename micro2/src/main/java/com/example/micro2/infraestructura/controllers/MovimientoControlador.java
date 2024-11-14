@@ -2,8 +2,10 @@ package com.example.micro2.infraestructura.controllers;
 
 import com.example.micro2.application.servicios.MovimientoServicio;
 import com.example.micro2.domian.exceptions.ErrorBadRequest;
+import com.example.micro2.domian.exceptions.RegisterNotFound;
 import com.example.micro2.domian.models.Movimiento;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +35,8 @@ public class MovimientoControlador {
     public ResponseEntity<?> obtenerMovimientoPorId(@PathVariable Long id) {
         try {
             return  ResponseEntity.ok(movimientoServicio.obtenerMovimientoPorId(id));
+        }catch (RegisterNotFound e) {
+            return  ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }catch (Exception e) {
             return  ResponseEntity.notFound().build();
         }

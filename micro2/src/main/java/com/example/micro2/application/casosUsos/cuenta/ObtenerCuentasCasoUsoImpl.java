@@ -22,6 +22,7 @@ public class ObtenerCuentasCasoUsoImpl implements ObtenerCuentasCasoUso {
 
     @Override
     public Optional<Cuenta> obtenerCuentaPorId(Long id) {
+        System.out.println("Buscando la cuenta con el id: "+ id);
         return cuentaRepositoryPort.obtenerCuentaPorId(id);
     }
 }

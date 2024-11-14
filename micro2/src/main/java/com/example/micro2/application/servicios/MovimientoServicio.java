@@ -1,7 +1,9 @@
 package com.example.micro2.application.servicios;
 
+import com.example.micro2.application.Dtos.ObtenerMovimientosDto;
 import com.example.micro2.domian.models.Movimiento;
 import com.example.micro2.domian.ports.in.movimiento.*;
+import com.example.micro2.infraestructura.models.Dtos.MovimientoDTO;
 import com.example.micro2.infraestructura.models.Dtos.MovimientoResponseDTO;
 import org.springframework.stereotype.Service;
 
@@ -35,12 +37,12 @@ public class MovimientoServicio implements ObtenerMovimientosCasoUso, CrearMovim
 
 
     @Override
-    public List<Movimiento> obtenerMovimientosCasoUso() {
+    public List<ObtenerMovimientosDto> obtenerMovimientosCasoUso() {
         return obtenerMovimientosCasoUso.obtenerMovimientosCasoUso();
     }
 
     @Override
-    public Optional<Movimiento> obtenerMovimientoPorId(Long id) {
+    public Optional<MovimientoDTO> obtenerMovimientoPorId(Long id) {
         return obtenerMovimientosCasoUso.obtenerMovimientoPorId(id);
     }
 

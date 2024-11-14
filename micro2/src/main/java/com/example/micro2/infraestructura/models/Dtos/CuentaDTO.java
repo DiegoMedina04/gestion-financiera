@@ -1,8 +1,10 @@
 package com.example.micro2.infraestructura.models.Dtos;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class CuentaDTO {
     private Long id;
     private Long numeroCuenta;
